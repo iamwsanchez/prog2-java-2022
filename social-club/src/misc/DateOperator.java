@@ -6,13 +6,15 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Scanner;
 
 public class DateOperator {
     public static boolean isDate(String stringDate, String format) {
         int dd, mm, yy;
         boolean leapyear = false;
-
-        switch (format) {
+        
+        try {
+        	switch (format) {
             case "ddMMyy":
             case "ddMMyyyy":
                 dd = Integer.parseInt(stringDate.substring(0, 2));
@@ -79,6 +81,12 @@ public class DateOperator {
             }
         }
         return true;
+        }
+        catch(Exception ex) {
+        	return false;
+        }
+        
+        
     }
 
     public static Date stringToDate(String date, String format) {
@@ -123,5 +131,21 @@ public class DateOperator {
             }
         }
         return age;
+    }
+
+    public static Date catchValidDate(Scanner scan, String promptText) {
+    	Date date = null;
+    	do {
+    		System.out.println(promptText);
+    		String dateString = scan.next();
+    		if(isDate(dateString, "dd/MM/yyyy")) {
+    			date = stringToDate(dateString, "dd/MM/yyyy");
+    		}
+    		else {
+    			System.out.println("El valor no es válido.");
+    		}
+    	}while(date==null);
+    	
+    	return date;
     }
 }

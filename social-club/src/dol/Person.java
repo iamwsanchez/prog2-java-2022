@@ -11,6 +11,10 @@ public class Person {
 	private String secondSurname;
 	private String gender;
 	private Date birthDate;
+	
+	public Person() {
+		
+	}
 
 	public Person(String firstName, String middleName, String surName, String secondSurname, String gender,
 			Date birthDate) {

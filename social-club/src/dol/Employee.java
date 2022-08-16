@@ -5,6 +5,8 @@ package dol;
 
 import java.util.Date;
 
+import misc.DateOperator;
+
 /**
  * @author willj
  *
@@ -13,7 +15,9 @@ public class Employee extends Person implements IPerson{
 	private String employeeNumber;
 	private Date entryDate;
 	private String job;
-	
+	public Employee() {
+		super();
+	}
 	public Employee(String firstName, String middleName, String surName, String secondSurname, String gender,
 			Date birthDate) {
 		super(firstName, middleName, surName, secondSurname, gender, birthDate);
@@ -54,13 +58,37 @@ public class Employee extends Person implements IPerson{
 
 	@Override
 	public void showDataAsRow() {
-		// TODO Auto-generated method stub
+		System.out.printf("\n%s %s %s %s %s %s %s %d %s %s\n",
+				getEmployeeNumber(),
+				getFirstName(), 
+				getMiddleName(),
+				getSurName(),
+				getSecondSurname(),
+				getGender(),
+				DateOperator.dateToString(getBirthDate(), "dd/MM/yyyy"),
+				getAge(),
+				DateOperator.dateToString(getEntryDate(), "dd/MM/yyyy"),
+				getJob()
+				);
+		System.out.println("_______________________________________________________________________________________");
 		
 	}
 
 	@Override
 	public void showDataAsForm() {
-		// TODO Auto-generated method stub
-		
+		System.out.println();
+				System.out.printf("\n Numero de empleado: %s\n Primer nombre: %s\n Segundo nombre: %s\n Primer apellido: %s\n Segundo apellido: %s\n Género: %s\n Fecha de nacimiento: %s\n Edad: %d\n Fecha de entrada: %s\n Puesto de trabajo: %s\n",
+				getEmployeeNumber(),
+				getFirstName(), 
+				getMiddleName(),
+				getSurName(),
+				getSecondSurname(),
+				getGender(),
+				DateOperator.dateToString(getBirthDate(), "dd/MM/yyyy"),
+				getAge(),
+				DateOperator.dateToString(getEntryDate(), "dd/MM/yyyy"),
+				getJob()
+				);
+		System.out.println();
 	}
 }

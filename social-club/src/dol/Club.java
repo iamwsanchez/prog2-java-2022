@@ -7,6 +7,10 @@ public class Club {
 	private String name;
 	private List<Member> members;
 	private List<Employee> employees;
+	public Club() {
+		members = new ArrayList<Member>();
+		employees = new ArrayList<Employee>();
+	}
 	public Club(String name, List<Member> members, List<Employee> employees) {
 		super();
 		this.name = name;
@@ -44,7 +48,7 @@ public class Club {
 		this.members.add(m);
 	}
 	public void showMembersAsTable() {
-		System.out.printf("\n========================== Listado de miembros del Club %n ==========================", name);
+		System.out.printf("\n========================== Listado de miembros del Club %n ==========================\n", name);
 		for(int i=0; i<members.size();i++) {
 			members.get(i).showDataAsRow();
 		}
