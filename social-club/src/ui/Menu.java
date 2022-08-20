@@ -25,7 +25,8 @@ public class Menu implements IMenu{
 					em.show();
 					break;
 				case 2:
-					System.out.println("Aquí se mostrará el menú de miembros.");
+					MemberMenu mm = new MemberMenu();
+					mm.show();
 					break;
 				case 3:
 					System.exit(0);

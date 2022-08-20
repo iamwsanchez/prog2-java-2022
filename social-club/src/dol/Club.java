@@ -48,17 +48,19 @@ public class Club {
 		this.members.add(m);
 	}
 	public void showMembersAsTable() {
-		System.out.printf("\n========================== Listado de miembros del Club %n ==========================\n", name);
+		System.out.println("_______________________________________________________________________________________");
+		System.out.printf("\nListado de miembros del Club %s\n", name);
+		System.out.println("_______________________________________________________________________________________");
 		for(int i=0; i<members.size();i++) {
 			members.get(i).showDataAsRow();
 		}
-		System.out.println("\n=====================================================================================");
 	}
 	public void showEmployeesAsTable() {
-		System.out.printf("\n========================== Listado de empleados del Club %n ==========================", name);
+		System.out.println("_______________________________________________________________________________________");
+		System.out.printf("\nListado de empleados del Club %s", name);
+		System.out.println("_______________________________________________________________________________________");
 		for(int i=0; i<employees.size();i++) {
 			employees.get(i).showDataAsRow();
 		}
-		System.out.println("\n=====================================================================================");
 	}
 }
