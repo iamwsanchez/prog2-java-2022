@@ -58,12 +58,10 @@ public class Member extends Person implements IPerson{
 	}
 
 	public Date getMembershipExpiration() {
+		membershipExpiration = DateOperator.addYears(membershipIssuance, 2);
 		return membershipExpiration;
 	}
 
-	public void setMembershipExpiration(Date membershipExpiration) {
-		this.membershipExpiration = membershipExpiration;
-	}
 
 	@Override
 	public void showDataAsRow() {
@@ -97,7 +95,7 @@ public class Member extends Person implements IPerson{
 		System.out.printf("\nEdad: %s", getAge());
 		System.out.printf("\nMienbro desde: %s", getMemberSince());
 		System.out.printf("\nFecha de emisión de membresía: %s", getMembershipIssuance());
-		System.out.printf("\nFecha de expiración de membresía: %s", getMembershipExpiration());
+		System.out.printf("\nFecha de expiración de membresía: %s", DateOperator.dateToString(getMembershipExpiration(), "dd/MM/yyyy"));
 	}
 
 

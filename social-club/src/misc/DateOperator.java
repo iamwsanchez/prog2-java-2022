@@ -148,4 +148,24 @@ public class DateOperator {
     	
     	return date;
     }
+    
+    public static Date addYears(Date input, int years) {
+    	Date output;
+    	try {
+            LocalDate localDate = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            int year  = localDate.getYear();
+            int month = localDate.getMonthValue();
+            int day   = localDate.getDayOfMonth();
+            
+            int outyear = year + years;
+            String stringDate = String.valueOf(day) + "/" + String.valueOf(month) + "/" + String.valueOf(outyear);
+            output = stringToDate(stringDate, "dd/MM/yyyy");
+            
+            return output;
+            
+    	}
+    	catch(Exception ex) {
+    		return input;
+    	}
+    }
 }

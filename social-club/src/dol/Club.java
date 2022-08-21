@@ -52,7 +52,7 @@ public class Club {
 		System.out.printf("\nListado de miembros del Club %s\n", name);
 		System.out.println("_______________________________________________________________________________________");
 		for(int i=0; i<members.size();i++) {
-			members.get(i).showDataAsRow();
+			members.get(i).showDataAsForm();
 		}
 	}
 	public void showEmployeesAsTable() {

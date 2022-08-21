@@ -41,8 +41,6 @@ public class MemberForm {
 		date = DateOperator.catchValidDate(scan, "Fecha de emisión de membresía (dd/MM/yyyy): ");
 		m.setMembershipIssuance(date);
 		
-		date = DateOperator.catchValidDate(scan, "Fecha de vencimiento de membresía (dd/MM/yyyy): ");
-		m.setMembershipExpiration(date);	
 		
 		return m;
 	}
