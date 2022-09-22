@@ -1,9 +1,13 @@
 package misc;
+<<<<<<< HEAD
+
+=======
 /**
  * 
  * @author willj
  * Esta clase es para demostración no tiene utilidad real.
  */
+
 public class Comparator {
 	private int number1;
 	private int number2;
@@ -11,6 +15,14 @@ public class Comparator {
 	public Comparator() {
 		super();
 	}
+
+	public Comparator(int number1, int number2, int number3) {
+		super();
+		this.number1 = number1;
+		this.number2 = number2;
+		this.number3 = number3;
+	}
+
 	public int getNumber1() {
 		return number1;
 	}
@@ -29,15 +41,18 @@ public class Comparator {
 	public void setNumber3(int number3) {
 		this.number3 = number3;
 	}
+
+	
 	public void compare() {
 		if(number1>number2 && number1>number3) {
-			System.out.printf("%d es el mayor de todos." , number1);
+			System.out.printf("%d es el número mayor.",number1);
 		}
 		else if(number2>number1 && number2>number3) {
-			System.out.printf("%d es el mayor de todos.", number2);
+			System.out.printf("%d es el número mayor.",number2);
 		}
 		else {
-			System.out.printf("%d es el mayor de todos.", number3);
+			System.out.printf(" %d es el número mayor.",number3);
+
 		}
 	}
 }

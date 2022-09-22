@@ -5,34 +5,42 @@ import java.util.Scanner;
 import misc.Comparator;
 
 public class Main {
-	private static Scanner scan = new Scanner(System.in);
+
+
 	public static void main(String[] args) {
-		int i, j, k;
-		i = 3; j = 5; k=8;
-		if(i>j) {
-			System.out.println("i es mayor que j.");
+		int i, j = 55, k = 19;
+		String userName = "William";
+		Scanner scan = new Scanner(System.in);
+		i=10;
+		/*if(i>j) {
+			//System.out.println("i es mayor");
+			System.out.printf("Usuario %s, %d es mayor que %d",userName,i,j);
 		}
 		else {
-			System.out.println("j es mayor que i.");
-		}
+			System.out.println("j es mayor");
+		}*/
+		
 		if(i>j && i>k) {
-			System.out.println("i es el mayor de todos.");
+			System.out.printf("Usuario %s, %d es el número mayor.",userName,i);
 		}
 		else if(j>i && j>k) {
-			System.out.println("i es el mayor de todos.");
+			System.out.printf("Usuario %s, %d es el número mayor.",userName,j);
 		}
 		else {
-			System.out.println("k es el mayor de todos.");
+			System.out.printf("Usuario %s, %d es el número mayor.",userName,k);
 		}
-		
-		Comparator comp = new Comparator();
+		System.out.println();
+		Comparator c = new Comparator();
 		System.out.println("Indica el número 1: ");
-		comp.setNumber1(scan.nextInt());
+		c.setNumber1(scan.nextInt());
 		System.out.println("Indica el número 2: ");
-		comp.setNumber2(scan.nextInt());
+		c.setNumber2(scan.nextInt());
 		System.out.println("Indica el número 3: ");
-		comp.setNumber3(scan.nextInt());
-		comp.compare();
+		c.setNumber3(scan.nextInt());
+		c.compare();
+		
+		
 	}
 
 }
+
