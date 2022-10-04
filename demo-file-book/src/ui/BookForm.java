@@ -27,10 +27,11 @@ public class BookForm {
 	public Book catchBook() {
 		Book b = new Book();
 		System.out.println("Título: ");
-		b.setTitle(scan.next());
+		scan.nextLine();//Esto es necesario para descartar la nueva linea.
+		b.setTitle(scan.nextLine());
 		
 		System.out.println("Autor: ");
-		b.setAuthor(scan.next());
+		b.setAuthor(scan.nextLine());
 		
 		return b;
 	}

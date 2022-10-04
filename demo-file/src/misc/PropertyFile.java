@@ -5,60 +5,61 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class PropertyFile {
-	private Properties properties;
-	private boolean isOpen;
-	
-	public PropertyFile() {
-		super();
-		properties = new Properties();
-		isOpen = open();
-	}
-	
-	public boolean open() {
+public class PropertyFile {    
+    Properties properties;
+    boolean fileExists;
+    
+    public PropertyFile(){
+        properties = new Properties();                     
+    }
+    public void open(){
+        try {
+            File f = new File("config.properties");
+            if (f.isFile() && f.canRead()) {                
+                InputStream input = new FileInputStream("config.properties");
+                properties.load(input);
+                input.close();  
+                fileExists=true;
+            }
+            else
+            {
+                fileExists=false;
+            }
+        } 
+        catch (FileNotFoundException ex) {  
+            Logger.getLogger(PropertyFile.class.getName()).log(Level.SEVERE, "PropertyFile", ex);
+        } 
+        catch (IOException ex) {
+            Logger.getLogger(PropertyFile.class.getName()).log(Level.SEVERE, "PropertyFile", ex);
+        }  
+    }
+
+    public boolean isFileExists() {
+        return fileExists;
+    }
+    
+    public String getProperty(String PropertyName){  
+        String PropertyValue;
         try{
-        	File file = new File("config.properties");
-            ObjectInputStream ois =  new ObjectInputStream(new FileInputStream(file));
-            properties.load(ois);
-            ois.close();
-            return true;
+            PropertyValue = properties.getProperty(PropertyName);
         }
-        catch(FileNotFoundException e){
-        	//e.printStackTrace();
-        } catch (IOException ex) {
-        	//ex.printStackTrace();
+        catch(Exception ex){
+            PropertyValue= "";
         }
-        return false;
-	}
-	public String getProperty(String key) {
-		try {
-			if(isOpen)
-				return properties.getProperty(key);
-			else
-				return "";
-		}
-		catch(Exception ex) {
-			return "";
-		}
-	}
-	public boolean setProperty(String key, String value) {
-		try {
-			if(isOpen) {
-				properties.setProperty(key, value);
-				return true;
-			}
-			else
-				return false;
-		}
-		catch(Exception ex) {
-			return false;
-		}
-	}
-	
+        if(PropertyValue==null)
+            PropertyValue = "";
+        return PropertyValue;
+    }
+    public void setProperty(String PropertyName,String PropertyValue)
+    {
+        properties.setProperty(PropertyName, PropertyValue);
+    }
     public boolean save(){
         boolean r;        
         try {
@@ -69,7 +70,8 @@ public class PropertyFile {
             r=true;
         } catch (IOException ex) {
             r=false;
+            Logger.getLogger(PropertyFile.class.getName()).log(Level.SEVERE, "PropertyFile", ex);
         }
         return r;
-    } 
+    }   
 }

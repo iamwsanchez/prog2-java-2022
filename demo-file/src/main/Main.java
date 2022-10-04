@@ -9,17 +9,17 @@ public class Main {
 
 	public static void main(String[] args) {
 		String pathToSave;
-		try (Scanner scan = new Scanner(System.in)) {
-			PropertyFile myprops = new PropertyFile();
-			pathToSave = myprops.getProperty("PathToSave");
-			while (pathToSave.length()<=0) {
-				System.out.println("Por favor indica la ruta donde se guardaran los archivos: ");
-				pathToSave = scan.next();
-			}
-			myprops.setProperty("PathToSave", pathToSave);
-			myprops.save();
+		Scanner scan = new Scanner(System.in);
+		PropertyFile myprops = new PropertyFile();
+		myprops.open();
+		pathToSave = myprops.getProperty("PathToSave");
+		while (pathToSave.length()<=0) {
+			System.out.println("Por favor indica la ruta donde se guardaran los archivos: ");
+			pathToSave = scan.next();
 		}
-		Application app = new Application();
+		myprops.setProperty("PathToSave", pathToSave);
+		myprops.save();
+		Application app = new Application(scan);
 		app.setPathToSave(pathToSave);
 		app.show();
 		

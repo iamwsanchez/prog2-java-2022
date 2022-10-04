@@ -11,11 +11,27 @@ import ui.BookForm;
 public class Application {
 	private Scanner scan;
 	private List<Book> books;
-	
+	private String pathToSave;
+	private String fileName;
+
 	public Application() {
 		scan = new Scanner(System.in);
+		fileName = "";
 		books = new ArrayList<Book>();
 	}
+	public Application(Scanner scanner) {
+		scan = scanner;
+		fileName = "";
+		books = new ArrayList<Book>();
+	}
+	
+	public String getPathToSave() {
+		return pathToSave;
+	}
+	public void setPathToSave(String pathToSave) {
+		this.pathToSave = pathToSave;
+	}
+	
 	public void displayOptions() {
 		System.out.println("Gestionar libros");
 		System.out.println("1. Agregar");
@@ -23,6 +39,7 @@ public class Application {
 		System.out.println("3. Abrir");
 		System.out.println("4. Salir");
 	}
+	
 	public void show() {
 		short option =0;
 		do {
@@ -59,11 +76,14 @@ public class Application {
 
 		BookDal bd = new BookDal();
 			
-		System.out.println("Por favor indica la ruta para guardar el archivo: ");
-		bd.setFilePath(scan.next());
+		bd.setFilePath(pathToSave);
 		
-		System.out.println("Por favor indica el nombre del archivo: ");		
-		bd.setFileName(scan.next());
+		while(fileName.length()==0) {			
+			System.out.println("Por favor indica el nombre del archivo: ");		
+			fileName = scan.next();
+		}
+		
+		bd.setFileName(fileName);
 		
 		bd.setBooks(books);
 		
@@ -71,8 +91,9 @@ public class Application {
 	}
 	
 	public void open() {
-		System.out.println("Por favor indica la ruta del archivo a abrir: ");
-		String filePath = scan.next();
+		System.out.println("Por favor indica el nombre del archivo a abrir: ");
+		fileName = scan.next();
+		String filePath = pathToSave + "\\" + fileName;
 		BookDal bd = new BookDal();
 		bd.setFilePath(filePath);
 		books = bd.openList();
