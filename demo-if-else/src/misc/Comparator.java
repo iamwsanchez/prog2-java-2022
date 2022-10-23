@@ -1,7 +1,4 @@
 package misc;
-<<<<<<< HEAD
-
-=======
 /**
  * 
  * @author willj
